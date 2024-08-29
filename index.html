@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <!-- <link rel="icon" type="image/ico" href="image/favicon.ico"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <title>Ai Prompt generator</title>
+</head>
+
+<body>
+    <main class="container">
+        <nav>
+            <ul>
+                <li><strong>Ai Prompt generator</strong></li>
+            </ul>
+        </nav>
+        <div x-data="{ 
+                topic: '', 
+                style: '',
+                artist: '',
+                webpage: '',
+                prompt: '', 
+                promptGenerator() {this.prompt = `${this.topic} ${this.style}`} 
+            }">
+            <form>
+                <fieldset>
+                    <article>
+                        <details>
+                            <summary>Topic</summary>
+                            <p>The topic is the core of your image and defines the main subject or scene. For example,
+                                if
+                                you want to generate an image of a futuristic warrior, the topic should specify what the
+                                warrior looks like, their pose, and their setting.</p>
+                            <b>Example</b>
+                            <blockquote>
+                                "A futuristic warrior in a cyberpunk city, holding a plasma sword, neon lights
+                                reflecting
+                                off armor."
+                            </blockquote>
+                            <p>In this prompt, you have:</p>
+                            <ul>
+                                <li>Main Subject: Futuristic warrior</li>
+                                <li>Scene and Setting: Cyberpunk city</li>
+                                <li>Action and Pose: Holding a plasma sword</li>
+                            </ul>
+                            <p>Being specific about these details will result in a more accurate and creative image.</p>
+                        </details>
+                        <input name="topic"
+                            placeholder="e.g A futuristic warrior in a cyberpunk city, holding a plasma sword, neon lights reflecting off armor"
+                            x-model="topic" autocomplete="off" />
+                    </article>
+                    <article>
+                        <details>
+                            <summary>Style</summary>
+                            <p>Style relates to the overall artistic direction of the image, which can be fantasy,
+                                surrealism, anime, or pop art. Combining multiple styles can create unique visual
+                                effects.</p>
+                            <b>Example Keywords</b>
+                            <ul>
+                                <li>Digital Painting</li>
+                                <li>Cyberpunk</li>
+                                <li>Neon Lights</li>
+                                <li>Abstract</li>
+                                <li>Steampunk</li>
+                            </ul>
+                            <b>Example Prompt Addition</b>
+                            <blockquote>
+                                "... digital painting, cyberpunk, vaporwave, futuristic neon colors."
+                            </blockquote>
+                        </details>
+                        <input type="text" name="style" placeholder="E.g digital painting, cyberpunk" x-model="style" />
+                    </article>
+                    <article>
+                        <details>
+                            <summary>Artist</summary>
+                            <p>Referencing specific artists is a powerful way to influence the output's visual style. If
+                                you mention well-known artists like Salvador Dalí, H.R. Giger, or Hayao Miyazaki, the
+                                generated image will adopt traits from their iconic styles.</p>
+                            <b>Example Prompt Addition</b>
+                            <blockquote>
+                                "... in the style of H.R. Giger and Salvador Dalí, surreal biomechanical details."
+                            </blockquote>
+                        </details>
+                        <input type="text" name="artist" placeholder="E.g in the style of H.R. Giger"
+                            x-model="artist" />
+                    </article>
+                    <article>
+                        <details>
+                            <summary>Webpage influence</summary>
+                            <p>Referencing art platforms such as ArtStation, DeviantArt, or Pinterest can also add a
+                                particular flair and quality to the generated images. These platforms are associated
+                                with high-quality concept art, which can improve the rendering.</p>
+                            <b>Example Prompt Addition</b>
+                            <blockquote>
+                                "...featured on ArtStation, trending on DeviantArt."
+                            </blockquote>
+                        </details>
+                        <input type="text" name="webpage" placeholder="E.g featured on ArtStation" x-model="webpage"/>
+                    </article>
+                </fieldset>
+                <button @click.prevent="promptGenerator()">Generate</button>
+            </form>
+            <br />
+            <label>Result:</label>
+            <textarea x-text="prompt" x-show="prompt !== ''"></textarea>
+        </div>
+    </main>
+    <footer class="container">
+        <small>
+            <p>prompt info referenced from <a href="https://fluxaistudio.com/blog/prompt-guide">FLUX.1 Prompt Guide</a>
+        </small>
+    </footer>
+</body>
+
+</html>
