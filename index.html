@@ -24,7 +24,13 @@
                 artist: '',
                 webpage: '',
                 prompt: '', 
-                promptGenerator() {this.prompt = `${this.topic} ${this.style}`} 
+                promptGenerator() { 
+                    if (this.topic !== '' || this.style !== '' || this.artist  !== ''|| this.webpage !== '') { 
+                        this.prompt = `${this.topic}  ${this.style} ${this.artist} ${this.webpage}` 
+                    } else {
+                        this.prompt = ''
+                    }
+                }
             }">
             <form>
                 <fieldset>
@@ -99,7 +105,7 @@
                                 "...featured on ArtStation, trending on DeviantArt."
                             </blockquote>
                         </details>
-                        <input type="text" name="webpage" placeholder="E.g featured on ArtStation" x-model="webpage"/>
+                        <input type="text" name="webpage" placeholder="E.g featured on ArtStation" x-model="webpage" />
                     </article>
                 </fieldset>
                 <button @click.prevent="promptGenerator()">Generate</button>
