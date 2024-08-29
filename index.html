@@ -23,10 +23,11 @@
                 style: '',
                 artist: '',
                 webpage: '',
+                sharp: '',
                 prompt: '', 
                 promptGenerator() { 
-                    if (this.topic !== '' || this.style !== '' || this.artist  !== ''|| this.webpage !== '') { 
-                        this.prompt = `${this.topic}  ${this.style} ${this.artist} ${this.webpage}` 
+                    if (this.topic !== '' || this.style !== '' || this.artist  !== ''|| this.webpage !== '' || this.sharp !== '') { 
+                        this.prompt = `${this.topic}  ${this.style} ${this.artist} ${this.webpage} ${this.sharp}` 
                     } else {
                         this.prompt = ''
                     }
@@ -106,6 +107,17 @@
                             </blockquote>
                         </details>
                         <input type="text" name="webpage" placeholder="E.g featured on ArtStation" x-model="webpage" />
+                    </article>
+                    <article>
+                        <details>
+                            <summary>Sharpness</summary>
+                            <p>Sharpness and clarity are crucial to make your image look polished. Words like “sharp
+                                focus” or “highly detailed” can ensure the image has clear lines and defined features.
+                            </p>
+                            <b>Example Prompt Addition</b>
+                            <blockquote>"...sharp focus, highly detailed textures."</blockquote>
+                        </details>
+                        <input type="text" name="sharp" placeholder="E.g sharp focus, highly detailed textures." x-model="sharp" />
                     </article>
                 </fieldset>
                 <button @click.prevent="promptGenerator()">Generate</button>
