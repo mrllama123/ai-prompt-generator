@@ -26,7 +26,6 @@
                 sharp: '',
                 extraDetails: '',
                 lighting: '',
-                negativePrompt: '',
                 prompt: '', 
                 promptGenerator() { 
                     if (
@@ -152,14 +151,36 @@
                             <b>Example Prompt Addition</b>
                             <blockquote>"...dramatic shadows, soft ambient lighting."</blockquote>
                         </details>
-                        <input type="text" name="lighting_and_brightness" placeholder="E.g dramatic shadows, soft ambient lighting." x-model="lighting" />
+                        <input type="text" name="lighting_and_brightness"
+                            placeholder="E.g dramatic shadows, soft ambient lighting." x-model="lighting" />
                     </article>
                 </fieldset>
                 <button @click.prevent="promptGenerator()">Generate</button>
             </form>
             <br />
+            <article>
+                <details>
+                    <summary>Negative Prompt</summary>
+                    <p>Negative prompts help avoid unwanted elements by specifying what you don’t want in the image.
+                        They
+                        can include undesirable styles, colors, or features.</p>
+                    <b>Common Negative Keywords</b>
+                    <ul>
+                        <li>Grainy</li>
+                        <li>Blurry</li>
+                        <li>Bad anatomy</li>
+                        <li>Extra limbs</li>
+                        <li>Unwanted objects (e.g., watermark, text)</li>
+                        <li>Low contrast</li>
+                    </ul>
+                    <b>Example Prompt Addition</b>
+                    <blockquote>"Negative: grainy, blurry, bad anatomy, extra limbs, watermark."</blockquote>
+                </details>
+            </article>
+            <br />
             <label>Prompt Result:</label>
             <textarea x-text="prompt" x-show="prompt !== ''"></textarea>
+
         </div>
     </main>
     <footer class="container">
