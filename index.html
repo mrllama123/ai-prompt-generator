@@ -24,10 +24,21 @@
                 artist: '',
                 webpage: '',
                 sharp: '',
+                extraDetails: '',
+                lighting: '',
+                negativePrompt: '',
                 prompt: '', 
                 promptGenerator() { 
-                    if (this.topic !== '' || this.style !== '' || this.artist  !== ''|| this.webpage !== '' || this.sharp !== '') { 
-                        this.prompt = `${this.topic}  ${this.style} ${this.artist} ${this.webpage} ${this.sharp}` 
+                    if (
+                        this.topic !== '' || 
+                        this.style !== '' || 
+                        this.artist  !== ''|| 
+                        this.webpage !== '' || 
+                        this.sharp !== '' ||
+                        this.extraDetails !== '' || 
+                        this.lighting !== ''
+                    ) { 
+                        this.prompt = `${this.topic}  ${this.style} ${this.artist} ${this.webpage} ${this.sharp} ${this.extraDetails} ${this.lighting}` 
                     } else {
                         this.prompt = ''
                     }
@@ -117,13 +128,37 @@
                             <b>Example Prompt Addition</b>
                             <blockquote>"...sharp focus, highly detailed textures."</blockquote>
                         </details>
-                        <input type="text" name="sharp" placeholder="E.g sharp focus, highly detailed textures." x-model="sharp" />
+                        <input type="text" name="sharp" placeholder="E.g sharp focus, highly detailed textures."
+                            x-model="sharp" />
+                    </article>
+                    <article>
+                        <details>
+                            <summary>Extra Details</summary>
+                            <p>These are additional descriptors that enhance the image's atmosphere or make it more
+                                visually compelling. Keywords like “cinematic,” “breathtaking,” or “dystopian” can add
+                                depth.</p>
+                            <b>Example Prompt Addition</b>
+                            <blockquote>"...cinematic, breathtaking, dystopian."</blockquote>
+                        </details>
+                        <input type="text" name="extra_details" placeholder="E.g cinematic, breathtaking, dystopian."
+                            x-model="extraDetails" />
+                    </article>
+                    <article>
+                        <details>
+                            <summary>Lighting and Brightness</summary>
+                            <p>Lighting impacts how the subject is perceived. Including specific lighting styles, like
+                                “backlit,” “dramatic shadows,” or “studio lighting,” can help achieve the desired
+                                effect.</p>
+                            <b>Example Prompt Addition</b>
+                            <blockquote>"...dramatic shadows, soft ambient lighting."</blockquote>
+                        </details>
+                        <input type="text" name="lighting_and_brightness" placeholder="E.g dramatic shadows, soft ambient lighting." x-model="lighting" />
                     </article>
                 </fieldset>
                 <button @click.prevent="promptGenerator()">Generate</button>
             </form>
             <br />
-            <label>Result:</label>
+            <label>Prompt Result:</label>
             <textarea x-text="prompt" x-show="prompt !== ''"></textarea>
         </div>
     </main>
